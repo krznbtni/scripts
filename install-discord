@@ -2,26 +2,20 @@
 
 DESKTOP_FILE=/opt/Discord/discord.desktop
 
-# Read sudo password.
-# Store it in a variable securely by using the '-s' option.
-# We later echo the sudo password into every command that needs sudo privileges.
-echo "enter the sudo password, please"
-read -s -r PW 
-
 # Download most recent version.
 curl --output discord.tar.gz -L "https://discord.com/api/download?platform=linux&format=tar.gz"
 
 # Unpack
-echo "$PW" | sudo tar -xvzf discord.tar.gz -C /opt
+sudo tar -xvzf discord.tar.gz -C /opt
 
 # Symlink the executable to the binary executables directory.
-echo "$PW" | sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
+sudo ln -sf /opt/Discord/Discord /usr/bin/Discord
 
 # To be able to launch graphically we need to update the desktop file
 # and copy it to the applications directory so the system can access it
-echo "$PW" | sudo sed -i -e 's|Exec=.*$|Exec=/usr/bin/Discord|g' "$DESKTOP_FILE"
-echo "$PW" | sudo sed -i -e "s|Icon=.*$|Icon=/opt/Discord/discord.png|g" "$DESKTOP_FILE"
-echo "$PW" | sudo cp -r "$DESKTOP_FILE" /usr/share/applications
+sudo sed -i -e 's|Exec=.*$|Exec=/usr/bin/Discord|g' "$DESKTOP_FILE"
+sudo sed -i -e "s|Icon=.*$|Icon=/opt/Discord/discord.png|g" "$DESKTOP_FILE"
+sudo cp -r "$DESKTOP_FILE" /usr/share/applications
 
 # Clean up
 rm discord.tar.gz
