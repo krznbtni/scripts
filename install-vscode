@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Read sudo password.
+# Store it in a variable securely by using the '-s' option.
+# We later echo the sudo password into every command that needs sudo privileges.
+echo "enter the sudo password, please"
+read -s -r PW
+
+# Download most recent version.
+curl --output vscode.tar.gz -L "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
+
+# Unpack
+echo "$PW" | sudo tar -xvzf vscode.tar.gz -C /opt
+
+# Symlink the executable to the binary executables directory.
+echo "$PW" | sudo ln -sf /opt/VSCode-linux-x64/bin/code /usr/bin/code
+
+# To be able to launch graphically we need to create a desktop file
+# in the applications directory so the system can access it
+echo "$PW" | sudo sh -c "echo '[Desktop Entry]
+Version=1.0
+Encoding=UTF-8
+Type=Application
+Icon=/opt/VSCode-linux-x64/resources/app/resources/linux/code.png
+Exec=/usr/bin/code
+Name=code
+Category=TextEditor;Development;IDE;
+Keywords=vscode;' > /usr/share/applications/code.desktop"
+
+# Clean up
+rm vscode.tar.gz

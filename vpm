@@ -1,0 +1,32 @@
+#!/bin/bash
+
+DIR1=$HOME/pkgs/void-packages/
+DIR2=$HOME/pkgs/void-packages/srcpkgs
+
+# Make sure the void-packages repository is up to date
+cd "$DIR1" || exit
+git pull
+
+
+cd "$DIR2" || exit
+if [[ -d "$1" ]]
+then
+	cd "$DIR1" || exit
+	 ./xbps-src pkg "$1" && sudo xbps-install --repository hostdir/binpkgs "$1"
+else
+	printf "Not found"
+fi
+
+# #!/bin/bash
+
+# while [[ "$#" -gt 0 ]]; do
+#     case $1 in
+#         -t|--target) target="$2"; shift ;;
+#         -u|--uglify) uglify=1 ;;
+#         *) echo "Unknown parameter passed: $1"; exit 1 ;;
+#     esac
+#     shift
+# done
+
+# echo "Where to deploy: $target"
+# echo "Should uglify  : $uglify"
