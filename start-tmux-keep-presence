@@ -1,0 +1,4 @@
+#!/bin/bash
+
+tmux new -s keep-presence -d
+tmux send-keys -t keep-presence 'keep-presence -s 120' C-m
