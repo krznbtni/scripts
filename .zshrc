@@ -108,12 +108,13 @@ source $ZSH/oh-my-zsh.sh
 
 ##### CUSTOM COMMANDS #####
 alias krznbtni-apt-update='sudo apt update && sudo apt upgrade && sudo apt autoremove -y && sudo snap refresh'
-alias krznbtni-systemctl-start-docker='sudo ~/code/krznbtni/scripts/systemctl-start-docker.sh'
-alias krznbtni-systemctl-stop-docker='sudo ~/code/krznbtni/scripts/systemctl-stop-docker.sh'
+alias krznbtni-cd-avis='cd ~/code/mirakel/avis'
 alias krznbtni-cd-diablo2='cd ~/code/mirakel/emnis/diablo2'
 alias krznbtni-cd-diablo3='cd ~/code/mirakel/emnis/diablo3'
 alias krznbtni-cd-mirakel='cd ~/code/mirakel'
 alias krznbtni-cd-services3='cd ~/code/mirakel/services3'
-alias krznbtni-systemctl-stop-teamviewer='sudo systemctl stop teamviewerd.service'
-alias krznbtni-systemctl-start-teamviewer='sudo systemctl start teamviewerd.service'
 alias krznbtni-start-tmux-keep-presence='~/code/krznbtni/scripts/start-tmux-keep-presence'
+alias krznbtni-systemctl-start-docker='sudo ~/code/krznbtni/scripts/systemctl-start-docker.sh'
+alias krznbtni-systemctl-start-teamviewer='sudo systemctl start teamviewerd.service'
+alias krznbtni-systemctl-stop-docker='sudo ~/code/krznbtni/scripts/systemctl-stop-docker.sh'
+alias krznbtni-systemctl-stop-teamviewer='sudo systemctl stop teamviewerd.service'
